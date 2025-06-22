@@ -1,8 +1,8 @@
 import path from "path";
 import { app, session } from "electron";
 import serve from "electron-serve";
+import { autoUpdater } from "electron-updater";
 import { createWindow } from "./helpers";
-import { registerHomeHandlers } from "./Home";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -22,6 +22,8 @@ if (isProd) {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: false,
       contextIsolation: true,
+      devTools: !isProd,
+      webSecurity: isProd,
     },
   });
 
@@ -35,10 +37,9 @@ if (isProd) {
     }
   );
 
-  registerHomeHandlers();
-
   if (isProd) {
     await mainWindow.loadURL("app://./home");
+    autoUpdater.checkForUpdatesAndNotify();
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);
