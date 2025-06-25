@@ -1,5 +1,5 @@
 import path from "path";
-import { app, session, dialog } from "electron";
+import { app, session, dialog, Notification } from "electron";
 import serve from "electron-serve";
 import { autoUpdater } from "electron-updater";
 import { createWindow } from "./helpers";
@@ -14,8 +14,22 @@ if (isProd) {
 }
 
 (async () => {
-  await app.whenReady();
+  // await app.whenReady();
   let isUpdate = false;
+
+  /** 푸쉬 알림 테스트 -> Electron의 내부 모듈인 Notification을 사용하면 푸쉬 알림 기능 구현 가능
+  const NOTIFICATION_TITLE = "Basic Notification";
+  const NOTIFICATION_BODY = "Notification from the Main process";
+
+  function showNotification() {
+    new Notification({
+      title: NOTIFICATION_TITLE,
+      body: NOTIFICATION_BODY,
+    }).show();
+  }
+
+  app.whenReady().then(showNotification);
+   */
 
   autoUpdater.on("checking-for-update", () => {
     log("업데이트 확인 중...");
