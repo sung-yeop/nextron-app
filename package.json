@@ -2,7 +2,7 @@
   "private": true,
   "name": "nextron-starter",
   "description": "nextron-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Your Name <your.email@example.com>",
   "main": "app/background.js",
   "scripts": {

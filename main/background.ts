@@ -79,6 +79,7 @@ if (isProd) {
           }
         });
     }
+    isUpdate = false;
   });
 
   const mainWindow = createWindow("main", {
