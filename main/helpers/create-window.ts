@@ -43,10 +43,13 @@ export const createWindow = (
 
   const resetToDefaults = () => {
     const bounds = screen.getPrimaryDisplay().bounds;
-    return Object.assign({}, defaultSize, {
-      x: (bounds.width - defaultSize.width) / 2,
-      y: (bounds.height - defaultSize.height) / 2,
-    });
+    if (defaultSize && defaultSize.width && defaultSize.height) {
+      return Object.assign({}, defaultSize, {
+        x: (bounds.width - defaultSize.width) / 2,
+        y: (bounds.height - defaultSize.height) / 2,
+      });
+    }
+    return null;
   };
 
   const ensureVisibleOnSomeDisplay = windowState => {

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import {
   LineChart,
@@ -22,8 +23,10 @@ const rechartsData = [
 ];
 
 export default function index() {
+  const router = useRouter();
   return (
     <div className="p-8 space-y-8">
+      <div onClick={() => router.back()}>뒤로가기</div>
       <h1 className="text-3xl font-bold mb-8">차트 샘플 페이지1</h1>
 
       <div className="space-y-8">
