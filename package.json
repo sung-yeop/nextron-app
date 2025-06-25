@@ -9,9 +9,18 @@
     "dev": "nextron",
     "build": "nextron build",
     "postinstall": "electron-builder install-app-deps",
-    "lint": "eslint .",
+    "lint": "eslint --cache renderer/**/*.{ts,tsx}",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write --cache renderer/**/*.{ts,tsx}",
+    "prepare": "husky && husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{tsx.ts.jsx.js}": [
+      "eslint --fix --cache",
+      "prettier --write -cache"
+    ],
+    "*.js": "eslint --cache --fix"
   },
   "build": {
     "appId": "com.sung-yeop.nextron-app",
@@ -57,6 +66,8 @@
     "eslint-config-next": "^15.3.3",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "next": "^14.2.4",
     "nextron": "^9.5.0",
     "postcss": "^8.5.5",
