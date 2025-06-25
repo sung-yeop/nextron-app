@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
+import preloadUpdateHandlers from "../main/updater/preload/index.handler";
 
 const handler = {
   send(channel: string, value: unknown) {
@@ -13,6 +14,10 @@ const handler = {
       ipcRenderer.removeListener(channel, subscription);
     };
   },
+  reload() {
+    ipcRenderer.send("reload");
+  },
+  ...preloadUpdateHandlers,
 };
 
 contextBridge.exposeInMainWorld("ipc", handler);
