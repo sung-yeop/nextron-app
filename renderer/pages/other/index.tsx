@@ -24,7 +24,7 @@ const rechartsData = [
 export default function index() {
   return (
     <div className="p-8 space-y-8">
-      <h1 className="text-3xl font-bold mb-8">차트 샘플 페이지</h1>
+      <h1 className="text-3xl font-bold mb-8">차트 샘플 페이지1</h1>
 
       <div className="space-y-8">
         <div>

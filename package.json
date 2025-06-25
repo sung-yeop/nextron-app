@@ -12,15 +12,14 @@
     "lint": "eslint --cache renderer/**/*.{ts,tsx}",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write --cache renderer/**/*.{ts,tsx}",
-    "prepare": "husky && husky install",
+    "prepare": "husky",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{tsx.ts.jsx.js}": [
+    "renderer/**/*.{ts,tsx,js,jsx}": [
       "eslint --fix --cache",
-      "prettier --write -cache"
-    ],
-    "*.js": "eslint --cache --fix"
+      "prettier --write --cache"
+    ]
   },
   "build": {
     "appId": "com.sung-yeop.nextron-app",
