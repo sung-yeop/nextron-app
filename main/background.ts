@@ -1,5 +1,6 @@
 import path from "path";
-import { app, session, dialog, Notification } from "electron";
+// import { app, session, dialog, Notification } from "electron";
+import { app, session, dialog } from "electron";
 import serve from "electron-serve";
 import { autoUpdater } from "electron-updater";
 import { createWindow } from "./helpers";
